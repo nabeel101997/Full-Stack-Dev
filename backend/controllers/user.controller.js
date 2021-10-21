@@ -9,10 +9,10 @@ require("dotenv").config();
 const crypto = require("crypto");
 
 exports.create = async function (req, res) {
-  const userInfo = req.body;
-  await services.create(userInfo);
+  const info = req.body;
+  await services.create(info);
   const success = {
-    message: `This user is registered Successfully!: ${userInfo.email} `,
+    message: `This user is registered Successfully!: ${info.email} `,
     statusCode: 201,
     data: null,
   }

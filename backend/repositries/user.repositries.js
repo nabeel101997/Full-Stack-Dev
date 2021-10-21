@@ -1,13 +1,14 @@
 const handeler = require("../middlewares/errorHandeler_middleware");
 const Model = require("../models/user.model")
 
-exports.create = async function (userInfo) {
+exports.create = async function (info) {
   const newModel = new Model({
-    email: userInfo.email,
-    name: userInfo.name,
+    email: info.email,
+    firstName: info.firstName,
+    lastName: info.lastName,
     role: "admin"
   });
-  newModel.setPassword(userInfo.password);
+  newModel.setPassword(info.password);
   await newModel.save();
 }
 

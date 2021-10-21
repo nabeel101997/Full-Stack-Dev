@@ -1,7 +1,7 @@
 const repositries = require("../repositries/user.repositries")
 
-exports.create = function (userInfo) {
-  repositries.create(userInfo);
+exports.create = function (info) {
+  repositries.create(info);
 }
 
 exports.details = function (id) {
