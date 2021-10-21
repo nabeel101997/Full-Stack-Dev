@@ -1,14 +1,19 @@
-import { useMutation } from 'react-query';
+import { useContext } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
+import AuthContext from '../../store/auth-context';
+import { toast } from 'react-toastify';
 import Card from '../ui/Card';
 import { Formik, Form } from 'formik';
 import { useRouter } from 'next/router';
-import classes from './NewRecordForm.module.css';
+import classes from './LoginForm.module.css';
 import * as Yup from 'yup';
 import { TextField } from './TextField';
-import { useQueryClient } from 'react-query';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function LoginForm() {
+
+  const authCtx = useContext(AuthContext);
 
   const router = useRouter();
 
@@ -33,7 +38,9 @@ function LoginForm() {
 
   const mutation = useMutation((newLogin) => userLogin(newLogin), { mutationKey: "login" });
   const { data, isLoading, isError, error, isSuccess } = mutation;
+  toast(data?.message);
   if (data?.status === 200) {
+    authCtx.login(data?.accessToken);
     window.localStorage.setItem("accessToken", data?.accessToken);
     router.push('/profile')
   }
@@ -76,6 +83,10 @@ function LoginForm() {
             </div>
             <div className={classes.actions}>
               <button type="Submit" disabled={!formik.isValid}>Login</button>
+            </div>
+            <div className={classes.display}>
+              <h4 className={classes.h4}>Don't have an Account?</h4>
+              <a className={classes.a} href='/'>SignUp</a>
             </div>
           </Form>
         )}

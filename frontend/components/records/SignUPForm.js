@@ -94,9 +94,9 @@ function SignUpForm() {
             <div className={classes.actions}>
               <button type="Submit" disabled={!formik.isValid}>Sign up</button>
             </div>
-            <div className={classes.control}>
+            <div className={classes.display}>
               <h4 className={classes.h4}>Already have an Account?</h4>
-              <a className={classes.a} href='/login'>login</a>
+              <a className={classes.a} href='/login'>Login</a>
             </div>
           </Form>
         )}

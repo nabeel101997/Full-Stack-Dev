@@ -52,8 +52,13 @@
 
 .a{
   color: #77002e;
+  margin: 20px 0 0 10px;
 }
 
 .h4{
   color: #77002e;
+}
+
+.display {
+  display: flex;
 }

@@ -4,7 +4,6 @@ import swal from 'sweetalert';
 
 
 function Dashboard(props) {
-  const records = props;
   const queryClient = useQueryClient();
   function editHandler(record) {
     props.editRecod({
